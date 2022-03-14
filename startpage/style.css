@@ -1,0 +1,140 @@
+:root {
+    --color-bg: #282828;                /* Background Color     */
+    --color-fg: #EADBB2;                /* Title Text Color     */
+    --color-link: #8F9191;              /* Link Color           */
+    --color-link-visited: #668F8B;      /* Visited Link Color   */
+    --color-link-hover: #FA7921 ;       /* Hovering Link Color  */
+    --font-style: 'Helvetica Neue';     /* Font Style of Page   */
+    --header-font-size: 40px;           /* Font Size of Headings*/
+    --font-weight: 300;                 /* Font Weight of Page  */
+    --gif-height: 300px;                /* Gif Height           */
+    --gif-width: 300px;                 /* Gif Width            */
+    --todo-width: 400px;                /* To Do Width          */
+    --cal-height: 600px;                /* Calendar Height      */
+}
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font: 14px var(--font-style);
+  font-weight: var(--font-weight);
+}
+
+/* Container for webpage*/
+.container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding: 1%;
+}
+
+.left-container {
+  width: var(--gif-width);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.right-container {
+    width: var(--todo-width);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Main hub of page*/
+.hub {
+  padding: 0px 0px 0px 100px;
+  height: 100%;
+  flex-grow: 3;
+}
+
+/* Gif Space Props*/
+.gif img {
+  height: var(--gif-height);
+}
+
+/* Calendar */
+.calendar{
+    display: flex;
+    height: var(--cal-height);
+}
+
+.datetime {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 35px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--header-font-size);
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+}
+
+.bookmarks {
+  display: flex;
+  justify-content: center;
+}
+
+/* Links Border */
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Category Titles  */
+.title {
+  font-size: 20px;
+}
+
+/* Links Style */
+li {
+  font-size: 16px;
+  list-style-type: none;
+  padding: 5px;
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Blinking */
+.blinking {
+  animation: opacity 1s ease-in-out infinite;
+  opacity: 1;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
