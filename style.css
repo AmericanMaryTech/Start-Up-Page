@@ -11,7 +11,6 @@
   --gif-height: 300px;                  /* Gif Height           */
   --gif-width: 300px;                   /* Gif Width            */
   --cal-height: 600px;                  /* Calendar Height      */
-  --cal-width: 2
 }
 
 /* Set the background color, text color, font, and font weight for the HTML and body elements */
@@ -35,8 +34,6 @@ html, body {
   display: flex;
   flex-direction: column;
   flex-grow: 2;
-  box-sizing: border-box;
-  margin: 10px;
 }
 
 /* Right container for to-do list */

@@ -3,22 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>~/startpage</title>
+    <title>Welcome Back!</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="javascript-todo/lib/todomvc-app.css">
     <script src="javascript-todo/lib/elmish.js"></script>
     <script src="javascript-todo/lib/todo-app.js"></script>
-    <script src="variables.js"></script> <!-- Include the variables.js file -->
+    <script src="variables.js"></script>
 </head>
 
 <body onload="startTime()">
     <div class="container">
-        <!-- Left Container -->
+
         <div class="left-container">
-            <!-- Gif Section -->
-            <div class="gif">
-                <img src="images/gif1.gif" />
-            </div>
+            <!-- Weather Section -->
+            <iframe src="weather-widget/index.html" width="400px" height="250px" frameborder="0"></iframe>
 
             <!-- Calendar Section -->
             <div class="calendar">
@@ -30,7 +28,6 @@
             </div>
         </div>
 
-        <!-- Center Hub -->
         <div class="hub">
             <!-- Date & Time Section -->
             <div class="datetime">

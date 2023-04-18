@@ -1,6 +1,6 @@
 # Custom Startpage
 
-A personalized startpage for your browser, featuring a main hub with date, time, and categorized bookmarks, a left container with a GIF and an embedded Google Calendar, and a right container with a Todo List App.
+A personalized startpage for your browser, featuring a main hub with date, time, and categorized bookmarks, a left container with a GIF and an embedded Google Calendar, and a right container with a Todo List App and a Weather Widget.
 
 [Live Preview](https://jgavrilo.github.io/startuppage/)
 
@@ -40,7 +40,17 @@ The Todo List App included in the right container is based on the [Todo List App
 
 To integrate the Todo List App into your startpage, you'll need to include the `elmish.js` and `todo-app.js` files in your project and reference them in your `index.html` file.
 
+## Weather Widget Integration
+
+To integrate the weather widget from [weatherwidget.io](https://weatherwidget.io), follow these steps:
+
+1. Visit [weatherwidget.io](https://weatherwidget.io).
+2. Customize your weather widget and click "Get Widget" when done.
+3. Copy the provided code snippet.
+4. Paste the code snippet into the `index.html` file, where you want the weather widget to appear.
+
 ## Dependencies
 
 - Elmish.js
 - TodoMVC App CSS
+- Weather Widget (weatherwidget.io)
