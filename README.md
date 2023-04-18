@@ -1,6 +1,6 @@
 # Custom Startpage
 
-[Live Preview](https://kencx.github.io/startpage/)
+[Live Preview](https://jgavrilo.github.io/startuppage/)
 
 Feel free to fork and make your own changes!
 
