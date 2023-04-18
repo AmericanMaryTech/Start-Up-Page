@@ -23,14 +23,11 @@ const streamingLinks = [
 // Shopping links
 const shoppingLinks = [
     { title: 'Amazon', url: 'https://www.amazon.com/' },
-    { title: 'Prose', url: 'https://prose.com/' },
-    { title: 'Thread Beast', url: 'https://myportal.threadbeast.com/#/app/home' },
     { title: 'Bespoke Post', url: 'https://www.bespokepost.com/the-club-room' }
 ];
 
 // Miscellaneous links
 const miscLinks = [
     { title: 'Minecraft Server', url: 'https://aternos.org/server/' },
-    { title: 'Italy Trip', url: 'https://drive.google.com/drive/folders/1UkP56pNG16huD2mvllUthInt6RZmaL7X' },
     { title: 'Alexa Dashboard', url: 'https://alexa.amazon.com/spa/index.html#cards' }
 ];
