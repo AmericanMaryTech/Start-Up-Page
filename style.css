@@ -1,18 +1,20 @@
+/* Variables for customizing colors, fonts, and sizes */
 :root {
-    --color-bg: #282828;                /* Background Color     */
-    --color-fg: #EADBB2;                /* Title Text Color     */
-    --color-link: #8F9191;              /* Link Color           */
-    --color-link-visited: #668F8B;      /* Visited Link Color   */
-    --color-link-hover: #FA7921 ;       /* Hovering Link Color  */
-    --font-style: 'Helvetica Neue';     /* Font Style of Page   */
-    --header-font-size: 40px;           /* Font Size of Headings*/
-    --font-weight: 300;                 /* Font Weight of Page  */
-    --gif-height: 300px;                /* Gif Height           */
-    --gif-width: 300px;                 /* Gif Width            */
-    --todo-width: 400px;                /* To Do Width          */
-    --cal-height: 600px;                /* Calendar Height      */
+  --color-bg: #282828;                /* Background Color     */
+  --color-fg: #EADBB2;                /* Title Text Color     */
+  --color-link: #8F9191;              /* Link Color           */
+  --color-link-visited: #668F8B;      /* Visited Link Color   */
+  --color-link-hover: #FA7921 ;       /* Hovering Link Color  */
+  --font-style: 'Helvetica Neue';       /* Font Style of Page   */
+  --header-font-size: 40px;             /* Font Size of Headings*/
+  --font-weight: 300;                   /* Font Weight of Page  */
+  --gif-height: 300px;                  /* Gif Height           */
+  --gif-width: 300px;                   /* Gif Width            */
+  --todo-width: 400px;                  /* To Do Width          */
+  --cal-height: 600px;                  /* Calendar Height      */
 }
 
+/* Set the background color, text color, font, and font weight for the HTML and body elements */
 html, body {
   background: var(--color-bg);
   color: var(--color-fg);
@@ -25,9 +27,10 @@ html, body {
   display: flex;
   justify-items: center;
   align-items: center;
-  padding: 1%;
+  height: 100vh;
 }
 
+/* Left container for gif and calendar */
 .left-container {
   width: var(--gif-width);
   display: flex;
@@ -35,11 +38,12 @@ html, body {
   flex-grow: 1;
 }
 
+/* Right container for to-do list */
 .right-container {
-    width: var(--todo-width);
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  width: var(--todo-width);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 /* Main hub of page*/
@@ -56,17 +60,19 @@ html, body {
 
 /* Calendar */
 .calendar{
-    display: flex;
-    height: var(--cal-height);
+  display: flex;
+  height: var(--cal-height);
 }
 
+/* Date and time section */
 .datetime {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 35px;
 }
 
+/* Welcome message section */
 .head {
   display: flex;
   flex-direction: column;
@@ -74,12 +80,14 @@ html, body {
   font-size: var(--header-font-size);
 }
 
+/* Individual category section */
 .category {
   display: flex;
   flex-direction: column;
   width: 180px;
 }
 
+/* Bookmarks section */
 .bookmarks {
   display: flex;
   justify-content: center;
@@ -106,15 +114,18 @@ li {
   padding: 5px;
 }
 
+/* Link styling */
 a:link {
   text-decoration: none;
   color: var(--color-link);
 }
 
+/* Visited link styling */
 a:visited {
   color: var(--color-link-visited);
 }
 
+/* Hover link styling */
 a:hover {
   color: var(--color-link-hover);
 }

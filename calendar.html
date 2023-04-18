@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<h2>Make a List based on JSON data.</h2>
+<ul id="myList"></ul>
+
+<!--JQuery CDN-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  //Jquery's ajax request
+  $.ajax({
+    type:'GET',
+    url:'https://www.googleapis.com/calendar/v3/calendars/eaachapter309@gmail.com/events?key=AIzaSyBZilw_M3Jk14gkmGk_bBuQUcBr_EW5RI4',
+    dataType: 'json',
+    async:true
+  }).done(function(data){
+   //once we get a successful response this callback function
+   //gets fired, and "data" contains the parsed json file .
+
+   //here we iterate over the object array
+  $.each(data.items, function(i, item){
+    //I do this to later format these timestamps
+    let start = new Date(item.start.dateTime); 
+    let end = new Date(item.end.dateTime);
+    //set options for date.toLocaleDateString() function
+    var options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+     //append data to the list.
+     $('#myList').append(`
+      <li>${item.summary} - ${start.toLocaleDateString('en-US', options)} - ${end.toLocaleDateString('en-US', options)} </li>
+      `);
+
+  });
+
+  }).fail(function(e){
+    error(e);
+  });
+
+var months = ["January", "February", "March", "April", "May", "Jun", "July", "August", "September", "October", "November", "December"];
+</script>
+
+</body>
+</html>

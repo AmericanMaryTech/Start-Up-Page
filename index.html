@@ -8,23 +8,31 @@
     <link rel="stylesheet" href="javascript-todo/lib/todomvc-app.css">
     <script src="javascript-todo/lib/elmish.js"></script>
     <script src="javascript-todo/lib/todo-app.js"></script>
+    <script src="variables.js"></script> <!-- Include the variables.js file -->
 </head>
 
 <body onload="startTime()">
     <div class="container">
-        
+        <!-- Left Container -->
         <div class="left-container">
+            <!-- Gif Section -->
             <div class="gif">
-              <img src="gif1.gif" />
+                <img src="images/gif1.gif" />
             </div>
-            
+
+            <!-- Calendar Section -->
             <div class="calendar">
-                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23282828&ctz=America%2FLos_Angeles&mode=AGENDA&showTitle=0&showNav=0&showTabs=0&showPrint=0&showDate=0&showTz=0&showCalendars=1&src=amVyZW15Z2F2cmlsb3YxM0BnbWFpbC5jb20&src=ZnVwN2FlYWlvczMyb25nbjlyMnRxZnFldDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=bmw4c29pOWFqMjcyYWxlOXJjdTRwbnJsa2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=amdhdnJpbG9Ac2lnbmFsdGVjaG5vbG9naWVzLmlv&color=%23E67C73&color=%23F4511E&color=%239E69AF&color=%23AD1457&color=%23D81B60&color=%234285F4" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23282828&ctz=America%2FLos_Angeles&mode=AGENDA&showTitle=0&showNav=0&showTabs=0&showPrint=0&showDate=0&showTz=0&showCalendars=1&src=amVyZW15Z2F2cmlsb3YxM0BnbWFpbC5jb20&src=ZnVwN2FlYWlvczMyb25nbjlyMnRxZnFldDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=bmw4c29pOWFqMjcyYWxlOXJjdTRwbnJsa2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=amdhdnJpbG9Ac2lnbmFsdGVjaG5vbG9naWVzLmlv&color=%23E67C73&color=%23F4511E&color=%239E69AF&color=%23AD1457&color=%23D81B60&color=%234285F4"
+                style="border-width:0; width: 100%; height: 600px;"
+                    frameborder="0" 
+                    scrolling="no">
+                </iframe>
             </div>
         </div>
 
+        <!-- Center Hub -->
         <div class="hub">
-
+            <!-- Date & Time Section -->
             <div class="datetime">
                 <table>
                     <tp id="date"></tp>
@@ -32,116 +40,127 @@
                 </table>
             </div>
             
+            <!-- Welcome Message -->
             <div class="head">
                 <p>Welcome back, Jeremy :)<span class="blinking">_</span></p>
-            
             </div>
 
+            <!-- Time & Date Script -->
             <script type="text/javascript">
                 var dt = document.getElementById("date");
                 var tim = document.getElementById("time");
 
-                function startTime()
-                {
-                    var today=new Date();
-                    var h=today.getHours();
-                    var m=today.getMinutes();
-                    var s=today.getSeconds();
-                    var ampm= "AM"
+                function startTime() {
+                    var today = new Date();
+                    var h = today.getHours();
+                    var m = today.getMinutes();
+                    var s = today.getSeconds();
+                    var ampm = "AM";
                     if (h > 12) {
                         h -= 12;
-                        ampm = "PM"
+                        ampm = "PM";
                     }
                     // add a zero in front of numbers<10
-                    m=checkTime(m);
-                    s=checkTime(s);
-                    tim.innerHTML=h+":"+m+":"+s+" "+ampm;
-                    var mn = today.getMonth()+1;
+                    m = checkTime(m);
+                    s = checkTime(s);
+                    tim.innerHTML = h + ":" + m + ":" + s + " " + ampm;
+                    var mn = today.getMonth() + 1;
                     var dat = today.getDate();
                     var yr = today.getFullYear();
-                    dt.innerHTML = mn+"/"+dat+"/"+yr+"";
-                    t=setTimeout(function(){startTime()},500);
+                    dt.innerHTML = mn + "/" + dat + "/" + yr + "";
+                    t = setTimeout(function() { startTime() }, 500);
                 }
-                
-                function checkTime(i)
-                {
-                    if (i<10)
-                      {
-                      i="0" + i;
-                      }
+
+                function checkTime(i) {
+                    if (i < 10) {
+                        i = "0" + i;
+                    }
                     return i;
                 }
-                
+
             </script>
-            
+
+            <!-- Bookmarks Section -->
             <div class="bookmarks">
+                <!-- Personal Links -->
                 <div class="category">
                     <div class="links">
                         <li class="title">Personal</li>
-                        <li><a href="https://gmail.com">Gmail</a></li>
-                        <li><a href="https://calendar.google.com/calendar/u/0/r/week">Calendar</a></li>
-                        <li><a href="https://drive.google.com/drive/u/0/my-drive">Drive</a></li>
-                        <li><a href="https://624yale.securecafe.com/residentservices/624-yale/home.aspx#tab_Community">624 Yale</a></li>
+                        <script>
+                            personalLinks.forEach(function(link) {
+                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
+                            });
+                        </script>
                     </div>
                 </div>
 
+                <!-- Professional Links -->
                 <div class="category">
                     <div class="links">
                         <li class="title">Professional</li>
-                        <li><a href="https://github.com/">Github</a></li>
-                        <li><a href="https://www.linkedin.com/feed/">LinkedIn</a></li>
-                        <li><a href="https://signaltechnologies.io/">Signal Techologies</a></li>
+                        <script>
+                            professionalLinks.forEach(function(link) {
+                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
+                            });
+                        </script>
                     </div>
                 </div>
 
+                <!-- Streaming Links -->
                 <div class="category">
                     <div class="links">
                         <li class="title">Streaming</li>
-                        <li><a href="https://youtube.com/">YouTube</a></li>
-                        <li><a href="https://netflix.com/">Netflix</a></li>
-                        <li><a href="https://www.disneyplus.com/home">Disney+</a></li>
-                        <li><a href="https://play.hbomax.com/page/urn:hbo:page:home">HBO Max</a></li>
-                        <li><a href="https://www.hulu.com/hub/home">Hulu</a></li>
+                        <script>
+                            streamingLinks.forEach(function(link) {
+                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
+                            });
+                        </script>
                     </div>
                 </div>
-                
+
+                <!-- Shopping Links -->
                 <div class="category">
                     <div class="links">
                         <li class="title">Shopping</li>
-                        <li><a href="https://www.amazon.com/">Amazon</a></li>
-                        <li><a href="https://prose.com/">Prose</a></li>
-                        <li><a href="https://myportal.threadbeast.com/#/app/home">Thread Beast</a></li>
-                        <li><a href="https://www.bespokepost.com/the-club-room">Bespoke Post</a></li>
+                        <script>
+                            shoppingLinks.forEach(function(link) {
+                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
+                            });
+                        </script>
                     </div>
                 </div>
-                
+
+                <!-- Miscellaneous Links -->
                 <div class="category">
                     <div class="links">
                         <li class="title">Misc.</li>
-                        <li><a href="https://aternos.org/server/">Minecraft Server</a></li>
-                        <li><a href="https://drive.google.com/drive/folders/1UkP56pNG16huD2mvllUthInt6RZmaL7X">Italy Trip</a></li>
-                        <li><a href="https://alexa.amazon.com/spa/index.html#cards">Alexa Dashboard</a></li>
+                        <script>
+                            miscLinks.forEach(function(link) {
+                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
+                            });
+                        </script>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-        
+
+        <!-- Right Container -->
         <div class="right-container">
-            
+            <!-- To-Do List Section -->
             <div class="todo">
                 <div id="app"></div>
                 <script>
                     var model = {
-                        todos: [ /*{ id: 0, title: "Make something people want.", done: false },*/ ],
+                        todos: [],
                         hash: '#/', // the "route" to display
                     };
                     mount(model, update, view, 'app', subscriptions);
                 </script>
             </div>
-            
+
         </div>
-        
+
     </div>
 </body>
 
