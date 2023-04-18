@@ -1,21 +1,30 @@
 # Custom Startpage
 
+A personalized startpage for your browser, featuring a main hub with date, time, and categorized bookmarks, a left container with a GIF and an embedded Google Calendar, and a right container with a Todo List App.
+
 [Live Preview](https://jgavrilo.github.io/startuppage/)
 
-Feel free to fork and make your own changes!
+## How to Use
 
-- Font: Fira Code
-- Colorscheme: Gruvbox Dark
-- Cat Gif: [Here](https://twitter.com/avogado6/status/1165595520967954432?s=19)
+To use this custom startpage, you have two options:
 
-![startpage](startpage.gif)
+1. Set the live preview URL as your browser's homepage: [https://jgavrilo.github.io/startuppage/](https://jgavrilo.github.io/startuppage/).
+2. Download the repository and open the `index.html` file locally on your machine.
 
-## Features
+To download the repository, update it, and use it locally:
 
-- Responsive design that stacks elements for smaller screens
-- Main hub with date, time, and categorized bookmarks
-- Left container with a GIF and an embedded Google Calendar
-- Right container with a Todo List App
+1. Click the green "Code" button on the GitHub repository page and then click "Download ZIP".
+2. Extract the ZIP file to your desired location on your computer.
+3. Open the `index.html` file with your preferred web browser and make sure it renders.
+4. Open the `variables.js` file with your preferred editor and adjust your links.
+5. Continue with steps below to make it your browser's homepage.
+
+To set the live preview URL as your homepage, follow the instructions for your specific browser:
+
+- [Google Chrome](https://support.google.com/chrome/answer/95314)
+- [Mozilla Firefox](https://support.mozilla.org/en-US/kb/how-to-set-the-home-page)
+- [Microsoft Edge](https://support.microsoft.com/en-us/microsoft-edge/change-your-home-page-4da4f121-8a63-4f5d-a7b0-5632f1b5c5ea)
+- [Apple Safari](https://support.apple.com/guide/safari/customize-your-start-page-ibrw1020/mac)
 
 ## Customization
 
