@@ -7,11 +7,11 @@
   --color-link-hover: #FA7921 ;       /* Hovering Link Color  */
   --font-style: 'Helvetica Neue';       /* Font Style of Page   */
   --header-font-size: 40px;             /* Font Size of Headings*/
-  --font-weight: 300;                   /* Font Weight of Page  */
+  --font-weight: 300px;                   /* Font Weight of Page  */
   --gif-height: 300px;                  /* Gif Height           */
   --gif-width: 300px;                   /* Gif Width            */
-  --todo-width: 400px;                  /* To Do Width          */
   --cal-height: 600px;                  /* Calendar Height      */
+  --cal-width: 2
 }
 
 /* Set the background color, text color, font, and font weight for the HTML and body elements */
@@ -27,7 +27,6 @@ html, body {
   display: flex;
   justify-items: center;
   align-items: center;
-  height: 100vh;
 }
 
 /* Left container for gif and calendar */
@@ -35,7 +34,9 @@ html, body {
   width: var(--gif-width);
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 2;
+  box-sizing: border-box;
+  margin: 10px;
 }
 
 /* Right container for to-do list */
@@ -43,14 +44,31 @@ html, body {
   width: var(--todo-width);
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 2;
+  box-sizing: border-box;
+  margin: 10px;
 }
 
-/* Main hub of page*/
+/* Main hub of page */
 .hub {
-  padding: 0px 0px 0px 100px;
-  height: 100%;
-  flex-grow: 3;
+  width: var(--hub-width);
+  flex-grow: 5;
+  box-sizing: border-box;
+  width: 768px;
+}
+
+/* Media query for small screens */
+@media (max-width: 1300px) {
+  .container {
+    flex-direction: column;
+  }
+  .hub {
+    order: -1; /* Move the hub to the top */
+    width: 100vw;
+  }
+  .left-container {
+    order: 1; /* Move the hub to the top */
+  }
 }
 
 /* Gif Space Props*/
@@ -62,6 +80,7 @@ html, body {
 .calendar{
   display: flex;
   height: var(--cal-height);
+  width: var(--cal-width);
 }
 
 /* Date and time section */

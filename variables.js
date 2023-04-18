@@ -9,7 +9,6 @@ const personalLinks = [
 const professionalLinks = [
     { title: 'Github', url: 'https://github.com/' },
     { title: 'LinkedIn', url: 'https://www.linkedin.com/feed/' },
-    { title: 'Signal Techologies', url: 'https://signaltechnologies.io/' }
 ];
   
 // Streaming links

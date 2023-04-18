@@ -1,44 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Calendar List View</title>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <style>
+    #events {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
 <body>
+  <h1>Google Calendar List View</h1>
+  <button id="authorize_button" style="display: none;">Authorize</button>
+  <button id="signout_button" style="display: none;">Sign Out</button>
+  <div id="events"></div>
+  <script>
+    const CLIENT_ID = '108219773196-erjcbtqta0m23tqfeov4jca2gi4jcqs4.apps.googleusercontent.com';
+    const API_KEY = 'AIzaSyC0hTYWTYHwhb5psZbp7vYpJCXMK2H8oT8';
+    const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+  
+    function handleClientLoad() {
+      gapi.load('client:auth', initClient);
+    }
+  
+    function initClient() {
+    gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        cookie_policy: 'single_host_origin',
+        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+        scope: SCOPES
+    }).then(() => {
+        gapi.auth2.getAuthInstance().isSignedIn.listen(handleAuthResult);
+        handleAuthResult(gapi.auth2.getAuthInstance().isSignedIn.get());
+        document.getElementById('signout_button').onclick = handleSignoutClick;
+    }, (error) => {
+        console.error('Error initializing API client:', error);
+    });
+}
 
+    function checkAuth() {
+      gapi.auth.authorize({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        immediate: true
+      }, handleAuthResult);
+    }
+  
+    function handleAuthResult(isSignedIn) {
+  if (isSignedIn) {
+    document.getElementById('authorize_button').style.display = 'none';
+    document.getElementById('signout_button').style.display = 'block';
+    listUpcomingEvents();
+  } else {
+    document.getElementById('authorize_button').style.display = 'block';
+    document.getElementById('signout_button').style.display = 'none';
+    document.getElementById('authorize_button').onclick = handleAuthClick;
+  }
+}
 
-<h2>Make a List based on JSON data.</h2>
-<ul id="myList"></ul>
+  
+    function handleAuthClick(event) {
+      gapi.auth.authorize({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        immediate: false
+      }, handleAuthResult);
+      return false;
+    }
+  
+    function handleSignoutClick(event) {
+      gapi.auth.setToken(null);
+      checkAuth();
+    }
+  
+    function listUpcomingEvents() {
+        const authToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
 
-<!--JQuery CDN-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-  //Jquery's ajax request
-  $.ajax({
-    type:'GET',
-    url:'https://www.googleapis.com/calendar/v3/calendars/eaachapter309@gmail.com/events?key=AIzaSyBZilw_M3Jk14gkmGk_bBuQUcBr_EW5RI4',
-    dataType: 'json',
-    async:true
-  }).done(function(data){
-   //once we get a successful response this callback function
-   //gets fired, and "data" contains the parsed json file .
-
-   //here we iterate over the object array
-  $.each(data.items, function(i, item){
-    //I do this to later format these timestamps
-    let start = new Date(item.start.dateTime); 
-    let end = new Date(item.end.dateTime);
-    //set options for date.toLocaleDateString() function
-    var options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-     //append data to the list.
-     $('#myList').append(`
-      <li>${item.summary} - ${start.toLocaleDateString('en-US', options)} - ${end.toLocaleDateString('en-US', options)} </li>
-      `);
-
-  });
-
-  }).fail(function(e){
-    error(e);
-  });
-
-var months = ["January", "February", "March", "April", "May", "Jun", "July", "August", "September", "October", "November", "December"];
-</script>
-
+        gapi.client.calendar.events.list({
+            calendarId: 'primary',
+            timeMin: (new Date()).toISOString(),
+            showDeleted: false,
+            singleEvents: true,
+            orderBy: 'startTime',
+            headers: {
+            'Authorization': `Bearer ${authToken}`
+            }
+            
+        }).then((response) => {
+            request.execute((response) => {
+            const events = response.result.items;
+            let eventsHTML = '';
+    
+            if (events.length > 0) {
+                for (let i = 0; i < events.length; i++) {
+                const event = events[i];
+                const when = event.start.dateTime || event.start.date;
+                eventsHTML += `<p><strong>${event.summary}</strong> - ${when}</p>`;
+                }
+            } else {
+                eventsHTML = '<p>No upcoming events found.</p>';
+            }
+    
+            document.getElementById('events').innerHTML = eventsHTML;
+            });
+            
+        });
+      
+    }
+  
+    handleClientLoad();
+  </script>
+  
 </body>
 </html>
