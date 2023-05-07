@@ -30,8 +30,7 @@
 
         <div class="hub">
             <!-- Date & Time Section -->
-            <div class="datetime">
-                <table>
+            <div class="datetime"><table>
                     <tp id="date"></tp>
                     <tp id="time"></tp>
                 </table>
@@ -43,103 +42,49 @@
             </div>
 
             <!-- Time & Date Script -->
-            <script type="text/javascript">
-                var dt = document.getElementById("date");
-                var tim = document.getElementById("time");
-
+            <script>
                 function startTime() {
-                    var today = new Date();
-                    var h = today.getHours();
-                    var m = today.getMinutes();
-                    var s = today.getSeconds();
-                    var ampm = "AM";
-                    if (h > 12) {
-                        h -= 12;
-                        ampm = "PM";
-                    }
-                    // add a zero in front of numbers<10
-                    m = checkTime(m);
-                    s = checkTime(s);
-                    tim.innerHTML = h + ":" + m + ":" + s + " " + ampm;
-                    var mn = today.getMonth() + 1;
-                    var dat = today.getDate();
-                    var yr = today.getFullYear();
-                    dt.innerHTML = mn + "/" + dat + "/" + yr + "";
-                    t = setTimeout(function() { startTime() }, 500);
+                const today = new Date();
+                let hours = today.getHours();
+                const minutes = today.getMinutes().toString().padStart(2, '0');
+                const seconds = today.getSeconds().toString().padStart(2, '0');
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12 || 12; // convert to 12-hour format
+                const date = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
+                const time = `${hours}:${minutes}:${seconds} ${ampm}`;
+                document.getElementById('date').textContent = date;
+                document.getElementById('time').textContent = time;
+                setTimeout(startTime, 500);
                 }
-
-                function checkTime(i) {
-                    if (i < 10) {
-                        i = "0" + i;
-                    }
-                    return i;
-                }
-
+                startTime();
             </script>
 
             <!-- Bookmarks Section -->
             <div class="bookmarks">
-                <!-- Personal Links -->
-                <div class="category">
-                    <div class="links">
-                        <li class="title">Personal</li>
-                        <script>
-                            personalLinks.forEach(function(link) {
-                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
-                            });
-                        </script>
+                <!-- Link Categories -->
+                <script>
+                const linkCategories = [
+                    { title: 'Personal', links: personalLinks },
+                    { title: 'Professional', links: professionalLinks },
+                    { title: 'Streaming', links: streamingLinks },
+                    { title: 'Shopping', links: shoppingLinks },
+                    { title: 'Misc.', links: miscLinks }
+                ];
+                
+                // Loop through link categories and generate HTML code
+                linkCategories.forEach(function(category) {
+                    document.write(`
+                    <div class="category">
+                        <div class="links">
+                        <li class="title">${category.title}</li>
+                        ${category.links.map(link => `<li><a href="${link.url}">${link.title}</a></li>`).join('')}
+                        </div>
                     </div>
-                </div>
-
-                <!-- Professional Links -->
-                <div class="category">
-                    <div class="links">
-                        <li class="title">Professional</li>
-                        <script>
-                            professionalLinks.forEach(function(link) {
-                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
-                            });
-                        </script>
-                    </div>
-                </div>
-
-                <!-- Streaming Links -->
-                <div class="category">
-                    <div class="links">
-                        <li class="title">Streaming</li>
-                        <script>
-                            streamingLinks.forEach(function(link) {
-                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
-                            });
-                        </script>
-                    </div>
-                </div>
-
-                <!-- Shopping Links -->
-                <div class="category">
-                    <div class="links">
-                        <li class="title">Shopping</li>
-                        <script>
-                            shoppingLinks.forEach(function(link) {
-                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
-                            });
-                        </script>
-                    </div>
-                </div>
-
-                <!-- Miscellaneous Links -->
-                <div class="category">
-                    <div class="links">
-                        <li class="title">Misc.</li>
-                        <script>
-                            miscLinks.forEach(function(link) {
-                                document.write('<li><a href="' + link.url + '">' + link.title + '</a></li>');
-                            });
-                        </script>
-                    </div>
-                </div>
-
+                    `);
+                });
+                </script>
             </div>
+            
         </div>
 
         <!-- Right Container -->
@@ -156,9 +101,13 @@
                 </script>
             </div>
 
+
         </div>
+
 
     </div>
 </body>
 
 </html>
+
+<!--<iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ" width="400" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>-->
